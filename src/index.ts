@@ -1,6 +1,6 @@
 import { resolve } from 'node:path'
 import { readFileSync } from 'node:fs'
-import { type Plugin } from 'vite'
+import type { Plugin } from 'vite'
 
 interface BaseOptions {
   devEnable?: boolean
@@ -13,6 +13,7 @@ interface BaseOptions {
 // this is default
 export interface TextLoading extends BaseOptions {
   type: 'text'
+  loadingText: string
 }
 
 // provide a image for loading
@@ -27,11 +28,14 @@ interface _SvgLoading extends BaseOptions {
   svgContent?: string
   path?: string
 }
-export type SvgLoading = _SvgLoading & ({ svg: string } | { src: string })
+export type SvgLoading = _SvgLoading & ({ svgContent: string } | { path: string })
 
 export type Options = TextLoading | ImageLoading | SvgLoading
+export function viteAppLoading(options?: TextLoading): Plugin
+export function viteAppLoading(options?: ImageLoading): Plugin
+export function viteAppLoading(options?: SvgLoading): Plugin
 export function viteAppLoading(
-  options: Options = {
+  options: any = {
     type: 'text',
     loadingText: 'loading...'
   }
