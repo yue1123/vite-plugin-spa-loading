@@ -4,6 +4,10 @@
 ![npm](https://img.shields.io/npm/dm/vite-plugin-app-loading?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/yue1123/vite-plugin-app-loading?style=flat-square)
 
+
+[English](./README.md)
+
+
 单页面应用程序首屏加载占位符插件，开箱即用。
 
 ## 📦 Install

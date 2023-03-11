@@ -1,7 +1,11 @@
 # vite-plugin-app-loading
+
 ![npm](https://img.shields.io/npm/v/vite-plugin-app-loading?style=flat-square)
 ![npm](https://img.shields.io/npm/dm/vite-plugin-app-loading?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/yue1123/vite-plugin-app-loading?style=flat-square)
+
+
+[简体中文](./README.zh.md)
 
 
 Spa application first screen loading placeholder plugin, out of the box.
@@ -58,7 +62,7 @@ export default {
     viteAppLoading({
       type: 'svg',
       path: 'xxx/loading.svg'
-      // or 
+      // or
       // svgContent: '<svg>....</svg>'
     })
   ]
@@ -131,7 +135,6 @@ Specify the svg source path if type is `svg`.
 - Type: `string`
 
 If the existing style is not suitable, you can customize the css through this option
-
 
 ## License
 
