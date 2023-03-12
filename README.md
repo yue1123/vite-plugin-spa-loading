@@ -1,8 +1,8 @@
-# vite-plugin-app-loading
+# vite-plugin-spa-loading
 
-![npm](https://img.shields.io/npm/v/vite-plugin-app-loading?style=flat-square)
-![npm](https://img.shields.io/npm/dm/vite-plugin-app-loading?style=flat-square)
-![GitHub](https://img.shields.io/github/license/yue1123/vite-plugin-app-loading?style=flat-square)
+![npm](https://img.shields.io/npm/v/vite-plugin-spa-loading?style=flat-square)
+![npm](https://img.shields.io/npm/dm/vite-plugin-spa-loading?style=flat-square)
+![GitHub](https://img.shields.io/github/license/yue1123/vite-plugin-spa-loading?style=flat-square)
 
 
 [简体中文](./README.zh.md)
@@ -13,13 +13,13 @@ Spa application first screen loading placeholder plugin, out of the box.
 ## 📦 Install
 
 ```shell
-npm i vite-plugin-app-loading -D
+npm i vite-plugin-spa-loading -D
 
 # yarn
-yarn add vite-plugin-app-loading -D
+yarn add vite-plugin-spa-loading -D
 
 # pnpm
-pnpm add vite-plugin-app-loading -D
+pnpm add vite-plugin-spa-loading -D
 ```
 
 ## 🦄 Usage
@@ -28,7 +28,7 @@ Add viteAppLoading plugin to vite.config.js / vite.config.ts and configure it:
 
 ```ts
 // vite.config.js / vite.config.ts
-import { viteAppLoading } from 'vite-plugin-app-loading'
+import { viteAppLoading } from 'vite-plugin-spa-loading'
 
 export default {
   plugins: [viteAppLoading()]
@@ -40,7 +40,7 @@ export default {
 ### text loading placeholder
 
 ```ts
-import { viteAppLoading } from 'vite-plugin-app-loading'
+import { viteAppLoading } from 'vite-plugin-spa-loading'
 
 export default {
   plugins: [
@@ -55,7 +55,7 @@ export default {
 ### svg loading placeholder
 
 ```ts
-import { viteAppLoading } from 'vite-plugin-app-loading'
+import { viteAppLoading } from 'vite-plugin-spa-loading'
 
 export default {
   plugins: [
@@ -72,7 +72,7 @@ export default {
 ### img loading placeholder
 
 ```ts
-import { viteAppLoading } from 'vite-plugin-app-loading'
+import { viteAppLoading } from 'vite-plugin-spa-loading'
 
 export default {
   plugins: [

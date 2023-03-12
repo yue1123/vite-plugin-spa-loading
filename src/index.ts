@@ -65,7 +65,7 @@ export function viteAppLoading(
   let isProd = false
   options = Object.assign(defaultOptions, options)
   return {
-    name: 'vite-plugin-app-loading',
+    name: 'vite-plugin-spa-loading',
     enforce: 'post',
     config(_, { command }) {
       isProd = command === 'build'
