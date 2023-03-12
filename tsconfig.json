@@ -19,5 +19,5 @@
     "declarationDir": "dist",
     "declaration": true
   },
-  "exclude": ["dist", "node_modules", "test"]
+  "exclude": ["dist", "node_modules", "test", "example"]
 }

@@ -8,8 +8,6 @@
 
 Out of the box spa application first screen loading placeholder plugin, avoid long time white screen before app launch.
 
-[React demo](https://yue1123.github.io/vite-plugin-spa-loading/react/)
-[Vue demo](https://yue1123.github.io/vite-plugin-spa-loading/vue/)
 ## 📦 Install
 
 ```shell
