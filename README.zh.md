@@ -8,6 +8,9 @@
 
 开箱即用的单页面应用程序首屏加载占位符插件，避免 app 启动前长时间的白屏。
 
+[React demo](https://yue1123.github.io/vite-plugin-spa-loading/react/)
+[Vue demo](https://yue1123.github.io/vite-plugin-spa-loading/vue/)
+
 ## 📦 Install
 
 ```shell
