@@ -121,7 +121,7 @@ Development environment whether enable.
 ### options.debounce
 
 - Type: `number`
-- Default: `300`
+- Default: `150`
 
 Prevent the loading animation from flashing when the network is good.
 

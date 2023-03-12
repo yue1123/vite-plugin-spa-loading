@@ -35,7 +35,7 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
   const defaultOptions = {
     tipText: 'loading...',
     rootElementId: 'app',
-    debounce: 300,
+    debounce: 150,
     devEnable: true
   }
   options = Object.assign(defaultOptions, options)
@@ -49,9 +49,9 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
   const renderTemplate = (config: Options) => {
     return `
     <style id="internal-css"> .loading-container { opacity: 0; animation: fade-in ${
-      config.debounce! + 300
+      config.debounce! + 150
     }ms linear ${Math.max(
-      config.debounce! - 300,
+      config.debounce! - 150,
       0
     )}ms forwards; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; justify-content: center; flex-direction: column; align-items: center; } @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-moz-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } </style>
     ${config.css ? `<style id="user-css">${config.css}</style>` : ''}

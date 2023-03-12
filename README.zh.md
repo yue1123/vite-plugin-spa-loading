@@ -122,7 +122,7 @@ app 挂载元素 ID
 #### options.debounce
 
 - Type: `number`
-- Default: `300`
+- Default: `150`
 
 防止网络良好的情况下，加载动画一闪而过。
 
