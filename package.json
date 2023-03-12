@@ -9,7 +9,8 @@
     "dev": "pnpm clean && tsup src/index.ts --watch --dts --format cjs",
     "build": "pnpm clean && tsup src/index.ts --dts --env.NODE_ENV production --format cjs && pnpm clean-up",
     "clean": "rimraf dist",
-    "clean-up": "rimraf tsconfig.tsbuildinfo"
+    "clean-up": "rimraf tsconfig.tsbuildinfo",
+    "build-example": "pnpm build && pnpm run -r build"
   },
   "files": [
     "dist"

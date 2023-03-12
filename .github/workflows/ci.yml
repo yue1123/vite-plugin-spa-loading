@@ -21,7 +21,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm run -r build
+        run: pnpm run build-example
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
