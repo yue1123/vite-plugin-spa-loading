@@ -7,8 +7,9 @@
   "module": "dist/index.js",
   "scripts": {
     "dev": "pnpm clean && tsup src/index.ts --watch --dts --format cjs",
-    "build": "pnpm clean && tsup src/index.ts --dts --env.NODE_ENV production --format cjs",
-    "clean": "rimraf dist"
+    "build": "pnpm clean && tsup src/index.ts --dts --env.NODE_ENV production --format cjs && pnpm clean-up",
+    "clean": "rimraf dist",
+    "clean-up": "rimraf tsconfig.tsbuildinfo"
   },
   "files": [
     "dist"

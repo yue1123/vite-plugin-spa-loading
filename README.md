@@ -4,11 +4,9 @@
 ![npm](https://img.shields.io/npm/dm/vite-plugin-spa-loading?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/yue1123/vite-plugin-spa-loading?style=flat-square)
 
-
 [简体中文](./README.zh.md)
 
-
-Spa application first screen loading placeholder plugin, out of the box.
+Out of the box spa application first screen loading placeholder plugin, avoid long time white screen before app launch.
 
 ## 📦 Install
 
@@ -86,51 +84,64 @@ export default {
 
 ## ⚙️ Configuration
 
-#### type
+```ts
+spaLoading(type, { options... })
+```
+
+### type
 
 - Type: `'text' | 'img' | 'svg'`
+- Default: `'text'`
 
 Loading placeholder content type.
 
-#### loadingText
+### options.rootElementId
 
 - Type: `string`
+- Default: `app`
+
+app mount element ID
+
+### options.tipText
+
+- Type: `string`
+- Default: `loading...`
 
 Loading placeholder content tip text.
 
-#### devEnable
+### options.devEnable
 
 - Type: `boolean`
-- Default: `false`
+- Default: `true`
 
 Development environment whether enable.
 
-#### debounce
+### options.debounce
 
 - Type: `number`
 - Default: `300`
 
 Prevent the loading animation from flashing when the network is good.
 
-#### src
+### options.src
 
 - Type: `string`
 
 Specify the URL of the image if type is `img`. It is recommended to use base64 images, avoid network loading affecting rendering.
 
-#### svgContent
+### options.content
 
 - Type: `string`
 
 Specify the svg content if type is `svg`.
 
-#### svgPath
+### options.path
 
 - Type: `string`
 
 Specify the svg source path if type is `svg`.
 
-#### css
+### options.css
 
 - Type: `string`
 

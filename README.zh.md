@@ -4,11 +4,9 @@
 ![npm](https://img.shields.io/npm/dm/vite-plugin-spa-loading?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/yue1123/vite-plugin-spa-loading?style=flat-square)
 
-
 [English](./README.md)
 
-
-单页面应用程序首屏加载占位符插件，开箱即用。
+开箱即用的单页面应用程序首屏加载占位符插件，避免 app 启动前长时间的白屏。
 
 ## 📦 Install
 
@@ -86,51 +84,64 @@ export default {
 
 ## ⚙️ Configuration
 
+```ts
+spaLoading(type, { options... })
+```
+
 #### type
 
 - Type: `'text' | 'img' | 'svg'`
+- Default: `'text'`
 
 加载占位符内容类型。
 
-#### loadingText
+#### options.rootElementId
 
 - Type: `string`
+- Default: `app`
+
+app 挂载元素 ID
+
+#### options.tipText
+
+- Type: `string`
+- Default: `loading...`
 
 加载占位符内容提示文字。
 
-#### devEnable
+#### options.devEnable
 
 - Type: `boolean`
-- Default: `false`
+- Default: `true`
 
 开发环境是否启用
 
-#### debounce
+#### options.debounce
 
 - Type: `number`
 - Default: `300`
 
 防止网络良好的情况下，加载动画一闪而过。
 
-#### src
+#### options.src
 
 - Type: `string`
 
 当`type`是`img`时，指定图片的地址。推荐使用 base64 图片，避免网络加载影响呈现
 
-#### svgContent
+#### options.content
 
 - Type: `string`
 
 当 `type`是`svg`时，指定 svg 内容。
 
-#### svgPath
+#### options.path
 
 - Type: `string`
 
 当 `type`是`svg`时，指定 svg 资源路径。
 
-#### css
+#### options.css
 
 - Type: `string`
 
