@@ -22,29 +22,29 @@ pnpm add vite-plugin-spa-loading -D
 
 ## 🦄 Usage
 
-Add viteAppLoading plugin to vite.config.js / vite.config.ts and configure it:
+Add spaLoading plugin to vite.config.js / vite.config.ts and configure it:
 
 ```ts
 // vite.config.js / vite.config.ts
-import { viteAppLoading } from 'vite-plugin-spa-loading'
+import { spaLoading } from 'vite-plugin-spa-loading'
 
 export default {
-  plugins: [viteAppLoading()]
+  plugins: [spaLoading()]
 }
 ```
 
 ## Overview
 
+
 ### text loading placeholder
 
 ```ts
-import { viteAppLoading } from 'vite-plugin-spa-loading'
+import { spaLoading } from 'vite-plugin-spa-loading'
 
 export default {
   plugins: [
-    viteAppLoading({
-      type: 'text',
-      loadingText: 'The loading text...'
+    spaLoading('text', {
+      tipText: 'The loading text...'
     })
   ]
 }
@@ -53,15 +53,14 @@ export default {
 ### svg loading placeholder
 
 ```ts
-import { viteAppLoading } from 'vite-plugin-spa-loading'
+import { spaLoading } from 'vite-plugin-spa-loading'
 
 export default {
   plugins: [
-    viteAppLoading({
-      type: 'svg',
+    spaLoading('svg', {
       path: 'xxx/loading.svg'
       // or
-      // svgContent: '<svg>....</svg>'
+      // content: '<svg>....</svg>'
     })
   ]
 }
@@ -70,12 +69,11 @@ export default {
 ### img loading placeholder
 
 ```ts
-import { viteAppLoading } from 'vite-plugin-spa-loading'
+import { spaLoading } from 'vite-plugin-spa-loading'
 
 export default {
   plugins: [
-    viteAppLoading({
-      type: 'img',
+    spaLoading('img', {
       src: 'xxx/loading.gif'
     })
   ]
