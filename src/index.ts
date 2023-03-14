@@ -33,7 +33,7 @@ export function spaLoading(type: 'img', options?: Image): Plugin
 export function spaLoading(type: 'svg', options?: Svg): Plugin
 export function spaLoading(type: LoadingPlaceholderType = 'text', options: any): Plugin {
   const defaultOptions = {
-    tipText: 'loading...',
+    tipText: 'Loading...',
     rootElementId: 'app',
     debounce: 150,
     devEnable: true
