@@ -59,6 +59,16 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
       config.tipText ? `<div class="loading-text">${config.tipText}</div>` : ''
     }</div>`
   }
+  // window.addEventListener(
+  //   'error',
+  //   (event) => {
+  //     if (!(event instanceof ErrorEvent)) {
+  //       // todo
+  //       console.log(event)
+  //     }
+  //   },
+  //   true
+  // )
   const tenser = (str: string) => str.replace(/\s{2,99}/g, ' ')
   let isProd = false
   return {
