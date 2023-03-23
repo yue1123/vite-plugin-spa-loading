@@ -47,28 +47,19 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
     text: () => ''
   }
   const renderTemplate = (config: Options) => {
+    const halfDebounce = config.debounce! / 2
     return `
-    <style id="internal-css"> .loading-container { opacity: 0; animation: fade-in ${
-      config.debounce! + 150
-    }ms linear ${Math.max(
-      config.debounce! - 150,
-      0
-    )}ms forwards; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; justify-content: center; flex-direction: column; align-items: center; } @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-moz-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } </style>
+    <style id="internal-css">.vite-plugin-spa-loading-error{color: #b75555;} .loading-container { opacity: 0; animation: fade-in ${
+      halfDebounce + 100
+    }ms linear ${halfDebounce}ms forwards; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; justify-content: center; flex-direction: column; align-items: center; } @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-moz-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } </style>
     ${config.css ? `<style id="user-css">${config.css}</style>` : ''}
-    <div class="loading-container ${type}-loading"><div class="loading-ani">${aniMap[type](config)}</div>${
-      config.tipText ? `<div class="loading-text">${config.tipText}</div>` : ''
-    }</div>`
+    <div id="vite-plugin-spa-loading" class="loading-container ${type}-loading"><div class="loading-ani">${aniMap[type](
+      config
+    )}</div>${config.tipText ? `<div class="loading-text">${config.tipText}</div>` : ''}</div>
+    <script>const errorSourceList = []; let id; window.addEventListener('error', (event) => { if (!(event instanceof ErrorEvent)) { try { const target = event.target || event.srcElement; if ( target instanceof HTMLElement && ['LINK', 'SCRIPT'].indexOf(target.nodeName) !== -1 ) { const src = target.src || target.href; if (window.location.href.indexOf(src) !== 0) { errorSourceList.push('GET - ' + src + ' - net::ERR_ABORTED 404 (Not Found)'); id && window.cancelAnimationFrame(id); id = window.requestAnimationFrame(() => { renderError(errorSourceList); }) } } } catch (err) {} } }, true ); function renderError(errorList) { const container = document.getElementById('vite-plugin-spa-loading'); if (container) { container.innerHTML = '<pre class="vite-plugin-spa-loading-error">ERROR: \\n\\n' + errorList.join('\\n') + '</pre>'; } }</script>
+    `
   }
-  // window.addEventListener(
-  //   'error',
-  //   (event) => {
-  //     if (!(event instanceof ErrorEvent)) {
-  //       // todo
-  //       console.log(event)
-  //     }
-  //   },
-  //   true
-  // )
+
   const tenser = (str: string) => str.replace(/\s{2,99}/g, ' ')
   let isProd = false
   return {
