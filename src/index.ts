@@ -60,16 +60,15 @@ export function spaLoading(
 
   const renderTemplate = (config: Options, externalStyle: string = "") => {
     const halfDebounce = config.debounce! / 2;
-    return `
+    return `<style id="internal-css">.vite-plugin-spa-loading-error{color: #b75555;} .loading-container { opacity: 0; animation: fade-in ${
+      halfDebounce + 100
+    }ms linear ${halfDebounce}ms forwards; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; justify-content: center; flex-direction: column; align-items: center; } @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-moz-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } </style>
+    ${config.css ? `<style id="user-css">${config.css}</style>` : ""}\n
     ${
       externalStyle !== ""
         ? `<style id="external-css">${externalStyle}</style>`
         : ""
     }
-    <style id="internal-css">.vite-plugin-spa-loading-error{color: #b75555;} .loading-container { opacity: 0; animation: fade-in ${
-      halfDebounce + 100
-    }ms linear ${halfDebounce}ms forwards; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; justify-content: center; flex-direction: column; align-items: center; } @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-moz-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } } </style>
-    ${config.css ? `<style id="user-css">${config.css}</style>` : ""}
     <div id="vite-plugin-spa-loading" class="loading-container ${type}-loading"><div class="loading-ani">${aniMap[
       type
     ](config)}</div>${
