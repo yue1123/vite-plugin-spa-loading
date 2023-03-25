@@ -5,12 +5,14 @@ importers:
   .:
     specifiers:
       '@types/node': ^18.15.0
+      prettier: ^2.8.7
       rimraf: ^4.4.0
       tsup: ^6.6.3
       typescript: ^4.9.5
       vite: ^4.1.4
     devDependencies:
       '@types/node': 18.15.0
+      prettier: 2.8.7
       rimraf: 4.4.0
       tsup: 6.6.3_typescript@4.9.5
       typescript: 4.9.5
@@ -1151,6 +1153,12 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+
+  /prettier/2.8.7:
+    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   /punycode/2.3.0:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
