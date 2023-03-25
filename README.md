@@ -145,6 +145,12 @@ Specify the svg source path if type is `svg`.
 
 If the existing style is not suitable, you can customize the css through this option
 
+### options.cssPath
+
+- Type: `string`
+
+Same as `options.css`, but imported css by file path
+
 ## License
 
 [MIT licenses](https://opensource.org/licenses/MIT)

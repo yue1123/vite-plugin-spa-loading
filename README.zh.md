@@ -144,6 +144,12 @@ app 挂载元素 ID
 
 如果已有的样式不合适，可通过此选项自定义 css
 
+### options.cssPath
+
+- Type: `string`
+
+与 `options.css` 相同，但通过文件路径导入 css
+
 ## License
 
 [MIT licenses](https://opensource.org/licenses/MIT)
