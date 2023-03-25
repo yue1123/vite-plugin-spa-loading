@@ -9,7 +9,10 @@
     "dev": "pnpm clean && tsup src/index.ts --watch --dts --format cjs",
     "build": "pnpm clean && tsup src/index.ts --dts --env.NODE_ENV production --format cjs && pnpm clean-up",
     "clean": "rimraf dist",
-    "clean-up": "rimraf tsconfig.tsbuildinfo"
+    "clean-up": "rimraf tsconfig.tsbuildinfo",
+    "example:dev": "pnpm run -C example dev",
+    "example:build": "pnpm run -C example build",
+    "example:preview": "pnpm run -C example preview"
   },
   "files": [
     "dist"
@@ -24,6 +27,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.15.0",
+    "prettier": "^2.8.7",
     "rimraf": "^4.4.0",
     "tsup": "^6.6.3",
     "typescript": "^4.9.5",
