@@ -8,9 +8,12 @@ export default defineConfig({
     vue(),
     spaLoading('text', {
       cssPath: './public/loading.css',
+      errorTip: 'Error occurred, It may be caused by cache, try to force refresh',
       onError: function () {
-        const href = window.location.href
-        if (href.indexOf('?t=') === -1) window.location.href = `${window.location.href}?t=${Date.now()}`
+        // 错误重试
+        const search = window.location.search
+        const reloadNum = +search.match(/slr=(\d+)/)?.[1] || 1
+        if (reloadNum < 3) window.location.search = `slt=${Date.now()}&slr=${reloadNum + 1}`
       }
     })
   ]
