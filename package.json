@@ -40,7 +40,6 @@
   },
   "dependencies": {
     "html-minifier": "^4.0.0",
-    "terser": "^5.16.8",
     "uglify-js": "^3.17.4"
   }
 }
