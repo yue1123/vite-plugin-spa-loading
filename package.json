@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-spa-loading",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Spa application first screen loading placeholder plugin",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,7 +33,7 @@
     "rimraf": "^4.4.0",
     "tsup": "^6.6.3",
     "typescript": "^4.9.5",
-    "vite": "^4.1.4"
+    "vite": "^4.2.0"
   },
   "peerDependencies": {
     "vite": "*"
