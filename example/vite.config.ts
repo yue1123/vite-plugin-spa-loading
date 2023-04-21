@@ -8,13 +8,17 @@ export default defineConfig({
     vue(),
     spaLoading('text', {
       cssPath: './public/loading.css',
-      errorTip: 'Error occurred, It may be caused by cache, try to force refresh',
-      onError: function () {
-        // 错误重试
-        const search = window.location.search
-        const reloadNum = +search.match(/slr=(\d+)/)?.[1] || 1
-        if (reloadNum < 3) window.location.search = `slt=${Date.now()}&slr=${reloadNum + 1}`
-      }
+      error: {
+        tip: '🎉New version Updated! Try force refresh to load updating.',
+        detail: false
+      },
+      devEnable: true
+      // onError: function () {
+      //   // 错误重试
+      //   const search = window.location.search
+      //   const reloadNum = +search.match(/slr=(\d+)/)?.[1] || 1
+      //   if (reloadNum < 3) window.location.search = `slt=${Date.now()}&slr=${reloadNum + 1}`
+      // }
     })
   ]
 })

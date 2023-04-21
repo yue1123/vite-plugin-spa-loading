@@ -1,3 +1,9 @@
 .loading-container .loading-text{
     color: #646cff;
 }
+
+.spa-loading-error-title{
+  border: 1px solid #666effb3;
+  padding: 15px;
+  border-radius: 6px;
+}

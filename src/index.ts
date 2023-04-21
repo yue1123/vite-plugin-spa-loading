@@ -13,7 +13,7 @@ export interface BaseOptions {
   rootElementId?: string
   /**
    * Development environment whether enable.
-   * @default true
+   * @default false
    */
   devEnable?: boolean
   /**
@@ -33,21 +33,30 @@ export interface BaseOptions {
    * Prevent the loading animation from flashing when the network is good.
    */
   debounce?: number
+
   /**
-   * error tip text
-   * @default ERROR: ...
+   * error handle config
    */
-  errorTip?: string
-  /**
-   * error handle callback
-   * @param error error list
-   * @example // error retry
-   *  const search = window.location.search
-        const reloadNum = +search.match(/slr=(\d+)/)?.[1] || 1
-        if (reloadNum < 3) window.location.search = `slt=${Date.now()}&slr=${reloadNum + 1}`
-   * @returns void
-   */
-  onError?: (error: string[]) => void
+  error?: {
+    /**
+     * error tip text
+     */
+    tip?: string
+    /**
+     * show error details
+     */
+    detail?: boolean
+    /**
+     * error handle callback
+     * @param error error list
+     * @example // error retry
+     *  const search = window.location.search
+          const reloadNum = +search.match(/slr=(\d+)/)?.[1] || 1
+          if (reloadNum < 3) location.reload(true)
+    * @returns void
+    */
+    handler?: (error: string[]) => void
+  }
 }
 
 //  text loading
@@ -86,14 +95,18 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
     tipText: 'Loading...',
     rootElementId: 'app',
     debounce: 150,
-    devEnable: true,
+    devEnable: false,
     css: '',
     cssPath: '',
-    errorTip: 'ERROR: ',
-    onError: () => {}
+    error: {
+      tip: 'ERROR: ',
+      detail: false,
+      handler: () => {}
+    }
   }
+  options.error = Object.assign(defaultOptions.error, options.error)
   options = Object.assign(defaultOptions, options)
-
+  console.log(options)
   let root = process.cwd()
   let appNodeRegexp = new RegExp(`<div id="${options.rootElementId}">([\\w\\W]*)<\\/div>`, 'gim')
   const aniMap: Record<LoadingPlaceholderType, any> = {
@@ -104,8 +117,9 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
   let isProd = false
   const renderTemplate = (config: Options, externalStyle: string = '') => {
     const halfDebounce = config.debounce! / 2
+    const errorConfig = config.error!
     const script = `try {
-  const options = { onError: ${config.onError!.toString().replace('onError', 'function')}};
+  const options = { onError: ${errorConfig.handler!.toString().replace('onError', 'function')}};
   const errorSourceList = [];
   let id;
   window.addEventListener(
@@ -129,16 +143,19 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
     true
   )
   function renderError(errorList) {
-    const container = document.getElementById('vite-plugin-spa-loading');
+    const container = document.getElementById('spa-loading');
     if (container) {
       container.innerHTML =
-        '<pre class="vite-plugin-spa-loading-error">${config.errorTip}\\n\\n' + errorList.join('\\n') + '</pre>';
+        [
+          '<div class="spa-loading-error-title">${errorConfig.tip}\\n\\n</div>',
+          ${errorConfig.detail ? "`<pre class='spa-loading-error'>${errorList.join('\\n')}</pre>`" : ''}
+        ].join('\\n');
     }
   }
   } catch (err) {}`
     const html = `
       <style id="internal-css">
-        .vite-plugin-spa-loading-error{
+        .spa-loading-error{
           color: #b75555;
         } 
         .loading-container {
@@ -181,7 +198,7 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
       </style>
       ${config.css ? `<style id="user-css">${config.css}</style>` : ''}
       ${externalStyle !== '' ? `<style id="external-css">${externalStyle}</style>` : ''}
-      <div id="vite-plugin-spa-loading" class="loading-container ${type}-loading">
+      <div id="spa-loading" class="loading-container ${type}-loading">
         <div class="loading-ani">${aniMap[type](config)}</div>
         ${config.tipText ? `<div class="loading-text">${config.tipText}</div>` : ''}
       </div>`
@@ -193,7 +210,7 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
 
   const errorLog = (content: string) => {
     console.log('\n')
-    console.log('\x1b[31m%s%s\x1b[0m', '✘ [vite-plugin-spa-loading] - ', content)
+    console.log('\x1b[31m%s%s\x1b[0m', '✘ [spa-loading] - ', content)
     console.log()
   }
   const getFileContent = (src: string) => {
@@ -205,7 +222,7 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
     }
   }
   return {
-    name: 'vite-plugin-spa-loading',
+    name: 'spa-loading',
     enforce: 'post',
     config(_, { command }) {
       isProd = command === 'build'
