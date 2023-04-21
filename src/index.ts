@@ -121,18 +121,20 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
   const options = { handler: ${errorConfig.handler!.toString().replace('handler', 'function')}};
   const errorSourceList = [];
   let id;
-  window.addEventListener(
-    'error',
-    (event) => {
-      errorSourceList.push(event);
-      id && (id = window.cancelAnimationFrame(id));
-      id = window.requestAnimationFrame(() => {
-        renderError(errorSourceList);
-        options.handler(errorSourceList);
-      })
-    },
-    true
-  )
+  let fn = (event) => {
+    if(!document.getElementById('vite-plugin-spa-loading')) {
+      window.removeEventListener('error', fn)
+      return
+    }
+    errorSourceList.push(event);
+    id && (id = window.cancelAnimationFrame(id));
+    id = window.requestAnimationFrame(() => {
+      renderError(errorSourceList);
+      options.handler(errorSourceList);
+    })
+  }
+  window.addEventListener('error', fn, true)
+
   function renderError(errorList) {
     const container = document.getElementById('spa-loading');
     if (container) {
@@ -189,7 +191,7 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
       </style>
       ${config.css ? `<style id="user-css">${config.css}</style>` : ''}
       ${externalStyle !== '' ? `<style id="external-css">${externalStyle}</style>` : ''}
-      <div id="spa-loading" class="loading-container ${type}-loading">
+      <div id="vite-plugin-spa-loading" class="loading-container ${type}-loading">
         <div class="loading-ani">${aniMap[type](config)}</div>
         ${config.tipText ? `<div class="loading-text">${config.tipText}</div>` : ''}
       </div>`
