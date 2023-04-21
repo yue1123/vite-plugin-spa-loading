@@ -81,74 +81,39 @@ export default {
 
 ## ⚙️ Configuration
 
-```ts
-spaLoading(type, { options... })
-```
+| Property Name | Type     | Description                                                                              | Default Value |
+| ------------- | -------- | ---------------------------------------------------------------------------------------- | ------------- |
+| rootElementId | string   | The ID of the element where the app will be mounted.                                     | -             |
+| devEnable     | boolean  | Whether to enable development environment.                                               | false         |
+| css           | string   | Custom CSS styles.                                                                       | -             |
+| cssPath       | string   | External CSS file path.                                                                  | -             |
+| tipText       | string   | The loading placeholder text.                                                            | "Loading..."  |
+| debounce      | number   | Debounce duration to avoid blinking of the loading animation in good network conditions. | -             |
+| error.tip     | string   | The error message text.                                                                  | -             |
+| error.detail  | boolean  | Whether to show the error details.                                                       | -             |
+| error.handler | Function | Error handling function that accepts an array of strings as a parameter.                 | -             |
 
-#### type
+### Image
 
-- Type: `'text' | 'img' | 'svg'`
-- Default: `'text'`
+`Image` interface extends `BaseOptions` and adds the following properties:
 
-加载占位符内容类型。
+| Property Name | Type   | Description                                      | Default Value |
+| ------------- | ------ | ------------------------------------------------ | ------------- |
+| src           | string | Path to the image file or base64 encoded string. | -             |
 
-#### options.rootElementId
+### Svg
 
-- Type: `string`
-- Default: `app`
+`_Svg` interface extends `BaseOptions` and adds the following properties:
 
-app 挂载元素 ID
+| Property Name | Type   | Description         | Default Value |
+| ------------- | ------ | ------------------- | ------------- |
+| content       | string | SVG content string. | -             |
 
-#### options.tipText
+or
 
-- Type: `string`
-- Default: `loading...`
-
-加载占位符内容提示文字。
-
-#### options.devEnable
-
-- Type: `boolean`
-- Default: `true`
-
-开发环境是否启用
-
-#### options.debounce
-
-- Type: `number`
-- Default: `150`
-
-防止网络良好的情况下，加载动画一闪而过。
-
-#### options.src
-
-- Type: `string`
-
-当`type`是`img`时，指定图片的地址。推荐使用 base64 图片，避免网络加载影响呈现
-
-#### options.content
-
-- Type: `string`
-
-当 `type`是`svg`时，指定 svg 内容。
-
-#### options.path
-
-- Type: `string`
-
-当 `type`是`svg`时，指定 svg 资源路径。
-
-#### options.css
-
-- Type: `string`
-
-如果已有的样式不合适，可通过此选项自定义 css
-
-### options.cssPath
-
-- Type: `string`
-
-与 `options.css` 相同，但通过文件路径导入 css
+| Property Name | Type   | Description    | Default Value |
+| ------------- | ------ | -------------- | ------------- |
+| path          | string | SVG file path. | -             |
 
 ## License
 

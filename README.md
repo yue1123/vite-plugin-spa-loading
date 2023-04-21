@@ -35,7 +35,6 @@ export default {
 
 ## Overview
 
-
 ### text loading placeholder
 
 ```ts
@@ -80,76 +79,43 @@ export default {
 }
 ```
 
-## ⚙️ Configuration
+## API
 
-```ts
-spaLoading(type, { options... })
-```
+### BaseOptions
 
-### type
+| 属性名        | 类型     | 描述                                             | 默认值       |
+| ------------- | -------- | ------------------------------------------------ | ------------ |
+| rootElementId | string   | app 挂载元素的 ID                                | -            |
+| devEnable     | boolean  | 是否开启开发环境                                 | false        |
+| css           | string   | 自定义 CSS 样式                                  | -            |
+| cssPath       | string   | 外部 CSS 文件路径                                | -            |
+| tipText       | string   | 加载占位符的提示文本                             | "Loading..." |
+| debounce      | number   | 防抖时长，避免在网络较好的情况下出现加载动画闪烁 | -            |
+| error.tip     | string   | 错误提示文本                                     | -            |
+| error.detail  | boolean  | 是否显示错误详情                                 | -            |
+| error.handler | Function | 错误处理函数，接收一个字符串数组作为参数         | -            |
 
-- Type: `'text' | 'img' | 'svg'`
-- Default: `'text'`
+### Image
 
-Loading placeholder content type.
+`Image` 接口继承自 `BaseOptions`，添加了以下属性：
 
-### options.rootElementId
+| 属性名 | 类型   | 描述                         | 默认值 |
+| ------ | ------ | ---------------------------- | ------ |
+| src    | string | 图片文件路径或 base64 字符串 | -      |
 
-- Type: `string`
-- Default: `app`
+### Svg
 
-app mount element ID
+`Svg` 接口继承自 `BaseOptions`，添加了以下属性：
 
-### options.tipText
+| 属性名  | 类型   | 描述           | 默认值 |
+| ------- | ------ | -------------- | ------ |
+| content | string | SVG 内容字符串 | -      |
 
-- Type: `string`
-- Default: `loading...`
+或者
 
-Loading placeholder content tip text.
-
-### options.devEnable
-
-- Type: `boolean`
-- Default: `true`
-
-Development environment whether enable.
-
-### options.debounce
-
-- Type: `number`
-- Default: `150`
-
-Prevent the loading animation from flashing when the network is good.
-
-### options.src
-
-- Type: `string`
-
-Specify the URL of the image if type is `img`. It is recommended to use base64 images, avoid network loading affecting rendering.
-
-### options.content
-
-- Type: `string`
-
-Specify the svg content if type is `svg`.
-
-### options.path
-
-- Type: `string`
-
-Specify the svg source path if type is `svg`.
-
-### options.css
-
-- Type: `string`
-
-If the existing style is not suitable, you can customize the css through this option
-
-### options.cssPath
-
-- Type: `string`
-
-Same as `options.css`, but imported css by file path
+| 属性名 | 类型   | 描述         | 默认值 |
+| ------ | ------ | ------------ | ------ |
+| path   | string | SVG 文件路径 | -      |
 
 ## License
 
