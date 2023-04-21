@@ -10,7 +10,10 @@ export default defineConfig({
       cssPath: './public/loading.css',
       error: {
         tip: '🎉New version Updated! Try force refresh to load updating.',
-        detail: false
+        detail: false,
+        handler(error) {
+          console.log(error, '===========')
+        }
       },
       devEnable: true
       // onError: function () {

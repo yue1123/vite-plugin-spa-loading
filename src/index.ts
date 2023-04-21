@@ -106,7 +106,6 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
   }
   options.error = Object.assign(defaultOptions.error, options.error)
   options = Object.assign(defaultOptions, options)
-  console.log(options)
   let root = process.cwd()
   let appNodeRegexp = new RegExp(`<div id="${options.rootElementId}">([\\w\\W]*)<\\/div>`, 'gim')
   const aniMap: Record<LoadingPlaceholderType, any> = {
@@ -119,26 +118,18 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
     const halfDebounce = config.debounce! / 2
     const errorConfig = config.error!
     const script = `try {
-  const options = { onError: ${errorConfig.handler!.toString().replace('onError', 'function')}};
+  const options = { handler: ${errorConfig.handler!.toString().replace('handler', 'function')}};
   const errorSourceList = [];
   let id;
   window.addEventListener(
     'error',
     (event) => {
-      if (!(event instanceof ErrorEvent)) {
-        const target = event.target || event.srcElement;
-        if (target instanceof HTMLElement && ['LINK', 'SCRIPT'].indexOf(target.nodeName) !== -1) {
-          const src = target.src || target.href;
-          if (window.location.href.indexOf(src) !== 0) {
-            errorSourceList.push('GET - ' + src + ' - net::ERR_ABORTED 404 (Not Found)');
-            id && (id = window.cancelAnimationFrame(id));
-            id = window.requestAnimationFrame(() => {
-              renderError(errorSourceList);
-              options.onError(errorSourceList);
-            })
-          }
-        }
-      }
+      errorSourceList.push(event);
+      id && (id = window.cancelAnimationFrame(id));
+      id = window.requestAnimationFrame(() => {
+        renderError(errorSourceList);
+        options.handler(errorSourceList);
+      })
     },
     true
   )
