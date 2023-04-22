@@ -136,7 +136,7 @@ export function spaLoading(type: LoadingPlaceholderType = 'text', options: any):
   window.addEventListener('error', fn, true)
 
   function renderError(errorList) {
-    const container = document.getElementById('spa-loading');
+    const container = document.getElementById('vite-plugin-spa-loading');
     if (container) {
       container.innerHTML =
         [
