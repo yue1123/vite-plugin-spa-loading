@@ -79,41 +79,43 @@ export default {
 }
 ```
 
-## ⚙️ Configuration
+## API
 
-| Property Name | Type     | Description                                                                              | Default Value |
-| ------------- | -------- | ---------------------------------------------------------------------------------------- | ------------- |
-| rootElementId | string   | The ID of the element where the app will be mounted.                                     | -             |
-| devEnable     | boolean  | Whether to enable development environment.                                               | false         |
-| css           | string   | Custom CSS styles.                                                                       | -             |
-| cssPath       | string   | External CSS file path.                                                                  | -             |
-| tipText       | string   | The loading placeholder text.                                                            | "Loading..."  |
-| debounce      | number   | Debounce duration to avoid blinking of the loading animation in good network conditions. | -             |
-| error.tip     | string   | The error message text.                                                                  | -             |
-| error.detail  | boolean  | Whether to show the error details.                                                       | -             |
-| error.handler | Function | Error handling function that accepts an array of strings as a parameter.                 | -             |
+### BaseOptions
+
+| 属性名        | 类型     | 描述                                             | 默认值       |
+| ------------- | -------- | ------------------------------------------------ | ------------ |
+| rootElementId | string   | app 挂载元素的 ID                                | -            |
+| devEnable     | boolean  | 是否开启开发环境                                 | false        |
+| css           | string   | 自定义 CSS 样式                                  | -            |
+| cssPath       | string   | 外部 CSS 文件路径                                | -            |
+| tipText       | string   | 加载占位符的提示文本                             | "Loading..." |
+| debounce      | number   | 防抖时长，避免在网络较好的情况下出现加载动画闪烁 | -            |
+| error.tip     | string   | 错误提示文本                                     | -            |
+| error.detail  | boolean  | 是否显示错误详情                                 | -            |
+| error.handler | Function | 错误处理函数，接收一个字符串数组作为参数         | -            |
 
 ### Image
 
-`Image` interface extends `BaseOptions` and adds the following properties:
+`Image` 接口继承自 `BaseOptions`，添加了以下属性：
 
-| Property Name | Type   | Description                                      | Default Value |
-| ------------- | ------ | ------------------------------------------------ | ------------- |
-| src           | string | Path to the image file or base64 encoded string. | -             |
+| 属性名 | 类型   | 描述                         | 默认值 |
+| ------ | ------ | ---------------------------- | ------ |
+| src    | string | 图片文件路径或 base64 字符串 | -      |
 
 ### Svg
 
-`_Svg` interface extends `BaseOptions` and adds the following properties:
+`Svg` 接口继承自 `BaseOptions`，添加了以下属性：
 
-| Property Name | Type   | Description         | Default Value |
-| ------------- | ------ | ------------------- | ------------- |
-| content       | string | SVG content string. | -             |
+| 属性名  | 类型   | 描述           | 默认值 |
+| ------- | ------ | -------------- | ------ |
+| content | string | SVG 内容字符串 | -      |
 
-or
+或者
 
-| Property Name | Type   | Description    | Default Value |
-| ------------- | ------ | -------------- | ------------- |
-| path          | string | SVG file path. | -             |
+| 属性名 | 类型   | 描述         | 默认值 |
+| ------ | ------ | ------------ | ------ |
+| path   | string | SVG 文件路径 | -      |
 
 ## License
 
